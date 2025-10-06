@@ -7,7 +7,7 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 # OpenRouter Configuration
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', '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')
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_MODEL = "deepseek/deepseek-chat-v3.1:free"
 
