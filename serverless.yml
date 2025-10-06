@@ -1,0 +1,47 @@
+service: sec-chatbot
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  timeout: 30
+  memorySize: 512
+  environment:
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+    AWS_REGION: ${self:provider.region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+      Resource: "*"
+
+functions:
+  chatbot:
+    handler: lambda_function.lambda_handler
+    events:
+      - http:
+          path: /chat
+          method: post
+          cors: true
+      - http:
+          path: /health
+          method: get
+          cors: true
+      - http:
+          path: /
+          method: get
+          cors: true
+    environment:
+      OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+    strip: false

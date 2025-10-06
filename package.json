@@ -1,0 +1,31 @@
+{
+  "name": "sec-chatbot",
+  "version": "1.0.0",
+  "description": "GenAI chatbot for SEC filing analysis using Python, AWS Lambda, and LLMs",
+  "main": "lambda_function.py",
+  "scripts": {
+    "deploy": "./deploy.sh",
+    "test": "python test_chatbot.py",
+    "start": "streamlit run app.py",
+    "install-deps": "pip install -r requirements.txt"
+  },
+  "keywords": [
+    "sec",
+    "chatbot",
+    "ai",
+    "llm",
+    "aws-lambda",
+    "python",
+    "edgar",
+    "financial-analysis"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-python-requirements": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
