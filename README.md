@@ -236,4 +236,4 @@ For issues and questions:
 
 ---
 
-**Built with using Python, AWS Lambda, and OpenAI GPT**
+**Built with using Python, AWS Lambda, and Deepseek API**
