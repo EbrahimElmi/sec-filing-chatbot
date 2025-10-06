@@ -66,5 +66,40 @@ node_modules/
 .serverless/
 
 # Environment variables
+.env
 .env.local
 .env.production
+.env.development
+.env.test
+.env.staging
+
+# API Keys and Secrets
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.json
+config.json
+api_keys.txt
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json

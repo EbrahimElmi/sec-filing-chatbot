@@ -1,22 +1,23 @@
 # 📊 SEC Filing Chatbot
 
-An end-to-end GenAI chatbot that extracts insights from SEC 10-K/10-Q filings using Python, AWS Lambda, and Large Language Models (LLMs).
+An AI-powered chatbot that analyzes SEC 10-K/10-Q filings using real-time data from the SEC EDGAR API and OpenRouter's DeepSeek model for intelligent analysis.
 
 ## 🚀 Features
 
 - **Real-time SEC Data Retrieval**: Integrated EDGAR API for accessing 10-K and 10-Q filings
-- **AI-Powered Analysis**: Leverages OpenAI GPT models for intelligent document summarization
+- **AI-Powered Analysis**: Leverages OpenRouter DeepSeek model for intelligent document analysis
 - **Comprehensive Insights**: Extracts financial highlights, business risks, growth opportunities, and investment recommendations
-- **Interactive Web Interface**: Beautiful Streamlit-based chat interface
-- **Serverless Architecture**: Deployed on AWS Lambda for scalable, cost-effective operation
+- **Interactive Web Interface**: Beautiful Streamlit-based chat interface with clean UI
+- **Rate Limit Handling**: Smart retry logic with exponential backoff for API reliability
+- **Fallback Analysis**: Graceful degradation when APIs are unavailable
 - **Production-Ready**: Includes proper error handling, logging, and deployment configurations
 
 ## 🏗️ Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Streamlit UI  │───▶│  AWS Lambda API │───▶│   OpenAI GPT    │
-│   (Frontend)    │    │   (Backend)     │    │   (LLM Engine)  │
+│   Streamlit UI  │───▶│  Python Backend │───▶│  OpenRouter     │
+│   (Frontend)    │    │  (Local/Cloud)  │    │  DeepSeek AI    │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                 │
                                 ▼
@@ -28,61 +29,65 @@ An end-to-end GenAI chatbot that extracts insights from SEC 10-K/10-Q filings us
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Python 3.9, AWS Lambda, Serverless Framework
+- **Backend**: Python 3.9, Streamlit
 - **Frontend**: Streamlit, HTML/CSS
-- **AI/ML**: OpenAI GPT-3.5-turbo, Prompt Engineering
+- **AI/ML**: OpenRouter DeepSeek, Prompt Engineering
 - **Data Source**: SEC EDGAR API
-- **Deployment**: AWS Cloud, Git version control
-- **Infrastructure**: Serverless, API Gateway, CloudWatch
+- **Deployment**: Streamlit Cloud (free hosting)
+- **Infrastructure**: Git version control, Environment variables
 
 ## 📋 Prerequisites
 
 - Python 3.9+
-- OpenAI API Key
-- AWS Account (for deployment)
-- Node.js (for Serverless Framework)
+- OpenRouter API Key
+- Git (for version control)
 
 ## 🚀 Quick Start
 
 ### 1. Clone and Setup
 
 ```bash
-git clone <your-repo-url>
-cd genai-sec-chatbot
+git clone https://github.com/YOUR_USERNAME/sec-filing-chatbot.git
+cd sec-filing-chatbot
+```
+
+### 2. Environment Setup
+
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Copy environment template
+cp env.example .env
 ```
 
-### 2. Environment Configuration
+### 3. Configure API Keys
 
-Create a `.env` file with your API keys:
+Edit `.env` file and add your OpenRouter API key:
 
 ```bash
-OPENAI_API_KEY=your_openai_api_key_here
-AWS_ACCESS_KEY_ID=your_aws_access_key_here
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key_here
-AWS_REGION=us-east-1
+OPENROUTER_API_KEY=your_actual_api_key_here
 ```
 
-### 3. Local Development
-
-Run the Streamlit app locally:
+### 4. Run Locally
 
 ```bash
-streamlit run app.py
+streamlit run app.py --server.port 8505
 ```
 
-The app will be available at `http://localhost:8501`
+Visit: http://localhost:8505
 
-### 4. Deploy to AWS
+### 5. Deploy to Streamlit Cloud
 
-```bash
-# Install Serverless Framework
-npm install -g serverless
-npm install -g serverless-python-requirements
-
-# Deploy to AWS
-./deploy.sh
-```
+1. Push to GitHub
+2. Go to https://share.streamlit.io
+3. Connect your repository
+4. Add environment variables in Streamlit Cloud dashboard
+5. Deploy!
 
 ## 💬 Usage Examples
 
